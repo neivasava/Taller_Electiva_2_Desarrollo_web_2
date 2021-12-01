@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <%- include('./templates/header') %>
+</head>
+<body  style="background-color:lavenderblush ;"> 
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <%- include('./templates/navbar') %>
+        </div>
+        <div class="card-body" >
+            <div class="row">
+                <h3>Prestamo de Instrumentos Musicales</h3>
+            </div>
+            <form method="post" action="/busqueda">
+                <div class="row m-3">
+                    <div class="col-sm-6">
+                        <label for="buscar" class="form-label">Buscar persona</label>
+                        <input type="text" name="cedula" placeholder="Ingresa Numero de Cedula">
+
+                        <button type="submit" class="btn btn-primary" style="background-color: rgb(243, 19, 52); border: rgb(245, 11, 46);">Buscar</button>
+
+                    </div>
+                    <span id="nomid"></span>
+                </div>
+            </form>
+
+                <div>
+                    <h1>Tabla Datos de busqueda</h1>
+                    </div>
+                <div class="card-body">
+                    <%if(resultadopersona.length){%>
+                        <table class="table bm-2">
+                            <thead>
+                                <th>Código</th>
+                                <th>Apellidos</th>
+                                <th>Nombres</th>
+                                <th>Instrumentos/Categoria</th>
+                                <th>Teléfono</th>
+                                <th>Correo</th>
+                                <th>Género</th>
+                                <th>Fecha Entrega</th>
+                                <th>Fecha Devuelto</th>
+          
+                            </thead>
+                            <tbody>
+                              
+                                <% resultadopersona.forEach(resultpersonas => { %>
+                                    <tr>
+                                        <td><%= resultpersonas.code %></td>
+                                        <td><%= resultpersonas.lastName %></td>
+                                        <td><%= resultpersonas.name %></td>
+                                        <td><%= resultpersonas.city %></td>
+                                        <td><%= resultpersonas.phone %></td>
+                                        <td><%= resultpersonas.email %></td>
+                                        <td><%= resultpersonas.genAux %></td>
+                                        <td><%= resultpersonas.fechaHora %></td>
+                                        <td>
+                                            <form method="post" action="/busqueda">
+                                                <div class="row m-3">
+                                                    <div class="col-sm-6">
+                                                        <button type="submit" class="btn btn-primary" style="background-color: rgb(243, 19, 52); border: rgb(245, 11, 46);">Devuelto Instrumento</button>
+                                
+                                                    </div>
+                                                    <span id="nomid"></span>
+                                                </div>
+                                            </form>
+
+                                        </td>
+                                    </td>
+                                    
+                                    </tr>
+                                <%})%>
+                            </tbody>
+                        </table>
+                    <%}else{%>
+                        <h5></h5>
+                    <%}%>
+
+             
+                </fieldset>
+               
+            
+        </div>
+        
+    </div>
+</div>
+<script>
+  
+</script>
+<%- include('./templates/footer') %>
+</body>
+</html>

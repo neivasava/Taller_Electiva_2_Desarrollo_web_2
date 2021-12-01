@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang='es'>
+    <head>
+        <%- include('./templates/header')%>
+    </head>
+    <body style="background-color:lavenderblush ;"> 
+         <div class="container" style="background-color:aliceblue;  color: rgb(12, 12, 12);">
+            <h1 style="font-family: cursive;">Prestamo de Instrumentos musicales </h1>
+            <div class="card">
+                <div class="card-header">
+                    <%- include('./templates/navbar')%>
+                </div>
+                
+                <div class="card-body">
+                    <%if(personas.length){%>
+                        <table class="table bm-2">
+                            <thead>
+                                <th>Código</th>
+                                <th>Apellidos</th>
+                                <th>Nombres</th>
+                                <th>Instrumentos/Categoria</th>
+                                <th>Teléfono</th>
+                                <th>Correo</th>
+                                <th>Género</th>
+                                <th>Fecha</th>
+          
+                            </thead>
+                            <tbody>
+                              
+                                <% personas.forEach(persona => { %>
+                                    <tr>
+                                        <td><%= persona.code %></td>
+                                        <td><%= persona.lastName %></td>
+                                        <td><%= persona.name %></td>
+                                        <td><%= persona.city %></td>
+                                        <td><%= persona.phone %></td>
+                                        <td><%= persona.email %></td>
+                                        <td><%= persona.genAux %></td>
+                                        <td><%= persona.fechaHora %></td>
+                                    
+                                    </tr>
+                                <%})%>
+                            </tbody>
+                        </table>
+                    <%}else{%>
+                        <h5></h5>
+                    <%}%>
+                    <a class="btn btn-danger" href="/insert" role="button" style="background-color:rgb(255, 0, 38) ; border: rgb(255, 6, 43);">Pedir Instrumento</a>
+                    <a class="btn btn-danger" href="/busqueda" role="button" style="background-color:rgb(255, 0, 38) ; border: rgb(255, 6, 43);">Entregar Instrumento</a>
+                  
+
+                    <!--vvvvvvvvvvvvvvvvvv-->
+
+                  </div>
+
+                <div class="container-md">
+                  <div class="float-start">Nestor Sanabria</div>
+                  <br>
+                  <div class="float-start">Electiva II</div>
+                  <br>
+                  <div class="float-start">Ingeniería de Sistemas y Computación</div>
+                  <br>
+                  <div class="float-start">Paipa</div>
+                  <br>
+                  <div class="float-start">2021</div>
+                  <br>
+              </div>
+            </div>
+
+        </div>
+        <%- include('./templates/footer')%>
+
+        
+    </body>
+</html>
